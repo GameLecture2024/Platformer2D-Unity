@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     public float JumpForce = 10f;
     private float moveInput;  // 플레이어의 방향 및 인풋 데이터 저장
 
-    public Transform startTransform; // 캐릭터가 시작할 위치
+    //public Transform startTransform; // 캐릭터가 시작할 위치
     public Rigidbody2D rigidbody2D;  // 물리(강체) 기능을 제어하는 컴포넌트
 
     [Header("점프")]
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
     void InitializePlayerStatus()
     {
-        transform.position = startTransform.position;
+        //transform.position = startTransform.position;
         rigidbody2D.velocity = Vector2.zero;
         facingRight = true;
         spriteRenderer.flipX = false;

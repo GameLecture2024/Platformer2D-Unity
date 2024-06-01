@@ -21,6 +21,11 @@ public class PlayerCam : MonoBehaviour
         fixedYPosition = transform.position.y;
     }
 
+    public void SetOffset()
+    {
+        offset = transform.position - playerTransform.position;
+    }
+
     // Lerp.  Linear Interpolation 선형 보간
     // 양 끝점을 알 때, 두 점 사이의 임의의 위치를 쉽게 파악하기 위한 수학적 개념.
     // 두 점(Point) -(Vector3). 카메라의 현재 위치. 이동 하고 싶은 위치 , 카메라 -> ( Point )-> 목표
