@@ -9,7 +9,6 @@ public class Trap_Saw : Trap
     public float speed = 5f;
     public int moveIndex = 0;
     public bool OnGoingForward = true;
-
     private void Start()
     {
         anim = GetComponent<Animator>();
