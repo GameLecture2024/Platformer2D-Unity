@@ -143,6 +143,12 @@ public class PlayerController : MonoBehaviour
         rigidbody2D.velocity = new Vector2(moveSpeed * moveInput, rigidbody2D.velocity.y);
     }
 
+
+    private void PlatformMove(Vector2 power)
+    {
+        rigidbody2D.velocity = power;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
