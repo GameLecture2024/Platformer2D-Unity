@@ -2,26 +2,26 @@ using System;
 using UnityEditor;
 using UnityEngine;
 
-// Á¢±Ù ÁöÁ¤ÀÚ public private protected
+// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ public private protected
 public class PlayerController : MonoBehaviour
 {
-    // Start, Update À¯´ÏÆ¼ ÀÌº¥Æ® ÇÔ¼öÀÇ °°Àº ÀÌ¸§ÀÌ ÀÖ´ÂÁö Á¶»ç
-    // °°Àº ÀÌ¸§ÀÌ ÀÖÀ¸¸é? À¯´ÏÆ¼¿¡¼­ Á¤ÇØ³õÀº ½ÇÇà ½Ã°£¿¡ ±× ÇÔ¼ö¸¦ ½ÇÇà
+    // Start, Update ï¿½ï¿½ï¿½ï¿½Æ¼ ï¿½Ìºï¿½Æ® ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½? ï¿½ï¿½ï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
     // Start is called before the first frame update
-    // Ã¹ ÇÁ·¹ÀÓÀÌ ºÒ·¯Áö±â Àü¿¡ (ÇÑ¹ø) ½ÃÀÛÇÑ´Ù. ÇÑ¹ø¸¸!
+    // Ã¹ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½Ñ¹ï¿½) ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. ï¿½Ñ¹ï¿½ï¿½ï¿½!
 
-    // ¼Óµµ, ¹æÇâ
-    [Header("ÀÌµ¿")]
-    public float moveSpeed = 5f;   // Ä³¸¯ÅÍÀÇ ÀÌµ¿ ¼Óµµ
+    // ï¿½Óµï¿½, ï¿½ï¿½ï¿½ï¿½
+    [Header("ï¿½Ìµï¿½")]
+    public float moveSpeed = 5f;   // Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½ ï¿½Óµï¿½
     public float JumpForce = 10f;
-    private float moveInput;  // ÇÃ·¹ÀÌ¾îÀÇ ¹æÇâ ¹× ÀÎÇ² µ¥ÀÌÅÍ ÀúÀå
+    private float moveInput;  // ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ç² ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-    //public Transform startTransform; // Ä³¸¯ÅÍ°¡ ½ÃÀÛÇÒ À§Ä¡
-    public Rigidbody2D rigidbody2D;  // ¹°¸®(°­Ã¼) ±â´ÉÀ» Á¦¾îÇÏ´Â ÄÄÆ÷³ÍÆ®
+    //public Transform startTransform; // Ä³ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡
+    public Rigidbody2D rigidbody2D;  // ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½Ã¼) ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 
-    [Header("Á¡ÇÁ")]
-    public bool isGrounded;          // true : Ä³¸¯ÅÍ°¡ Á¡ÇÁ ÇÒ ¼ö ÀÖ´Â »óÅÂ, false : Á¡ÇÁ ¸øÇÔ
+    [Header("ï¿½ï¿½ï¿½ï¿½")]
+    public bool isGrounded;          // true : Ä³ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½, false : ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public float groundDistance = 2f;
     public LayerMask groundLayer;
 
@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     private bool facingRight = true;
     private int facingDirection = 1;
 
+
+    [SerializeField] ParticleController particleController;
     public Animator animator;
     private bool isMove;
 
@@ -38,10 +40,10 @@ public class PlayerController : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
             
         Debug.Log("Hello Unity");
-        // ÇöÀç ³» À§Ä¡ <= »õ·Î¿î x,y ÀúÀåÇÏ´Â µ¥ÀÌÅÍ Å¸ÀÔ( ÇöÀç xÁÂÇ¥, 10 yÁÂÇ¥)
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡ <= ï¿½ï¿½ï¿½Î¿ï¿½ x,y ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å¸ï¿½ï¿½( ï¿½ï¿½ï¿½ï¿½ xï¿½ï¿½Ç¥, 10 yï¿½ï¿½Ç¥)
         //transform.position = new Vector2(transform.position.x, 10);
 
-        // ÇöÀç ³» À§Ä¡¸¦ startTransformÀ¸·Î º¯°æ
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ startTransformï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         InitializePlayerStatus();
     }
 
@@ -54,10 +56,10 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    // 1 ÇÁ·¹ÀÓ ¸¶´Ù È£ÃâµÈ´Ù. - ¹Ýº¹ÀûÀ¸·Î ½ÇÇà 
+    // 1 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È£ï¿½ï¿½È´ï¿½. - ï¿½Ýºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
     void Update()
     {
-        // ÇÔ¼ö ÀÌ¸§ ¾Õ¿¡ ¸¶¿ì½ºÄ¿¼­¸¦ µÎ°í Ctlr + R + R 
+        // ï¿½Ô¼ï¿½ ï¿½Ì¸ï¿½ ï¿½Õ¿ï¿½ ï¿½ï¿½ï¿½ì½ºÄ¿ï¿½ï¿½ï¿½ï¿½ ï¿½Î°ï¿½ Ctlr + R + R 
         HandleAnimation();
         CollisionCheck();
         HandleInput();
@@ -68,7 +70,7 @@ public class PlayerController : MonoBehaviour
 
     private void FallDownCheck()
     {
-        // yÀÇ ³ôÀÌ°¡ Æ¯Á¤ ÁöÁ¡º¸´Ù ³·À» ¶§ ³«»çÇÑ °ÍÀ¸·Î °£ÁÖÇÑ´Ù. => Ãæµ¹ Ã¼Å© ´ëÃ¼
+        // yï¿½ï¿½ ï¿½ï¿½ï¿½Ì°ï¿½ Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. => ï¿½æµ¹ Ã¼Å© ï¿½ï¿½Ã¼
         if(transform.position.y < -11)
         {
             InitializePlayerStatus();
@@ -77,27 +79,34 @@ public class PlayerController : MonoBehaviour
 
     private void HandleAnimation()
     {
-        // rigidbody.velocity : ÇöÀç rigidbody ¼Óµµ = 0 ¿òÁ÷ÀÌÁö ¾Ê´Â »óÅÂ, !=0 ¿òÁ÷ÀÌ°í ÀÖ´Â »óÅÂ
+        // rigidbody.velocity : ï¿½ï¿½ï¿½ï¿½ rigidbody ï¿½Óµï¿½ = 0 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ï¿½, !=0 ï¿½ï¿½ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½
         isMove = rigidbody2D.velocity.x != 0;  
         animator.SetBool("isMove", isMove);
         animator.SetBool("isGrounded", isGrounded);
-        // SetFloat ÇÔ¼ö¿¡ ÀÇÇØ¼­ yÃÖ´ëÀÏ ¶§ 1·Î º¯È¯.. y ÃÖ¼ÒÀÏ ¶§ -1·Î º¯È¯
-        // Á¡ÇÁ Å°¸¦ ´©¸£¸é. ¼ø°£ÀûÀ¸·Î y ³ôÀÌ Áõ°¡, Áß·Â¿¡ ÀÇÇØ¼­ Á¡Á¡ y ¼Óµµ -±îÁö ³»·Á°¥°Ì´Ï´Ù.
+        // SetFloat ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ yï¿½Ö´ï¿½ï¿½ï¿½ ï¿½ï¿½ 1ï¿½ï¿½ ï¿½ï¿½È¯.. y ï¿½Ö¼ï¿½ï¿½ï¿½ ï¿½ï¿½ -1ï¿½ï¿½ ï¿½ï¿½È¯
+        // ï¿½ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ y ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ß·Â¿ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ y ï¿½Óµï¿½ -ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì´Ï´ï¿½.
         animator.SetFloat("yVelocity", rigidbody2D.velocity.y);  
     }
 
     /// <summary>
-    /// Á¡ÇÁ¸¦ ÇÒ ¶§ ¶¥ÀÎÁö ¾Æ´ÑÁö Ã¼Å© ÇÏ´ÂÁö ±â´É -> Collider Check
+    /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ï¿½ï¿½ Ã¼Å© ï¿½Ï´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ -> Collider Check
     /// </summary>
     private void CollisionCheck()
     {
         isGrounded = Physics2D.Raycast(transform.position, Vector2.down, groundDistance, groundLayer);
+
+        particleController.isGround = isGrounded;
     }
     /// <summary>
-    /// ÇÃ·¹ÀÌ¾îÀÇ ÀÔ·Â °ªÀ» ¹Þ¾Æ¿Í¾ß ÇÕ´Ï´Ù.  a,d Å°º¸µå ÁÂ ¿ì Å°¸¦ ´­·¶À» ¶§ -1 ~ 1 ¹ÝÈ¯ÇÏ´Â Å¬·¡½º
+    /// ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿Í¾ï¿½ ï¿½Õ´Ï´ï¿½.  a,d Å°ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ -1 ~ 1 ï¿½ï¿½È¯ï¿½Ï´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½
     /// </summary>
     private void HandleInput()
     {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            particleController.PlayParticle();
+        }
+
         moveInput = Input.GetAxis("Horizontal");
 
         JumpButton();
@@ -105,12 +114,12 @@ public class PlayerController : MonoBehaviour
 
     private void HandleFlip()
     {
-        // ¿À¸¥ÂÊ ¹æÇâÀ¸·Î ¹Ù¶óº¸°í ÀÖÀ» ¶§ 
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶óº¸°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 
         if(facingRight && moveInput < 0)
         {
             Flip();
         }
-        // ¿ÞÂÊ ¹æÇâÀ¸·Î ¹Ù¶óº¸°í ÀÖÀ» ¶§
+        // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¶óº¸°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
         else if(!facingRight && moveInput > 0)
         {
             Flip();
