@@ -26,6 +26,8 @@ public class ParticleController : MonoBehaviour
 
     public void PlayParticle()
     {
+        // myParticle 사운드 출력
+        AudioManager.instance.PlaySFX(6);
         myParticle.Play();
     }
 
