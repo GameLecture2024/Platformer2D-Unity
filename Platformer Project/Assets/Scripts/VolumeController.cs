@@ -25,5 +25,4 @@ public class VolumeController : MonoBehaviour
     {
         audioMixer.SetFloat(mixerParameterName, Mathf.Log10(value) * sliderMultiPlier);
     }
-
 }
