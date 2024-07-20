@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
                 break;
         }
 
-        return $"선택한 난이도 : {name}";
+        return name;
     }
 
     public void SaveGameDifficulty()
