@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
 
     public PlayerUI playerUI;
 
+    MovementTransform2D movementTransform2D;
+
     void LoadComponents()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
